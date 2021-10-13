@@ -103,12 +103,12 @@ let getMode = () => {
         mode = MODETYPE.AFTERREP;
     } else if (url.includes('www.6park.com') && url.endsWith('.shtml')) {
         mode = MODETYPE.MAINSITE;
-    } else if (url.endsWith('newspark/index.php') || url.endsWith('/newspark/')) {
+    } else if (url.includes('act=newsreply&')) {
+        mode = MODETYPE.NEWREPLY;
+    } else if ((url.includes('newspark/index.php') || url.endsWith('/newspark/')) && url.includes('act=newsreply')) {
         mode = MODETYPE.NEWSLIST;
     } else if (url.includes('act=view&nid=')) {
         mode = MODETYPE.NEWSPAGE;
-    } else if (url.includes('act=newsreply&')) {
-        mode = MODETYPE.NEWREPLY;
     } else if (url.includes('club.6parkbbs.com') && url.endsWith('index.php')) {
         mode = MODETYPE.SUBFORUM;
     } else if (url.includes('6parkbbs.com') &&
